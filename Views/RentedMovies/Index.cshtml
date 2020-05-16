@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TvShowsApp.Models.RentedMovie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Movies for renting</h1>
+<div class="divtop">
+    @await Html.PartialAsync("_buttonExcel")
+    @await Html.PartialAsync("_Search")
+    <div class="dropdown" style="display: inline">
+        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Options
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a href="/RentedMovies/ExportExcel" class="btn btn-warning dropdown-item">Excel-Rented</a>
+            <a href="/RentedMovies/SendMail" class="btn btn-danger dropdown-item">SendMail</a>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @*@Html.DisplayNameFor(model => model.TvShow.Title)*@
+                Titles
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cus.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RentalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="myRow">
+
+                <td class="title1">
+                    @Html.DisplayFor(modelItem => item.TvShow.Title)
+                </td>
+                <td class="title2">
+                    @Html.DisplayFor(modelItem => item.Cus.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RentalDate)
+                </td>
+                <td class="returnDate">
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.RentedMovieId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.RentedMovieId">Details</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.RentedMovieId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

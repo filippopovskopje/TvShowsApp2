@@ -1,0 +1,57 @@
+﻿@model IEnumerable<TvShowsApp.Models.Customers>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Customers</h1>
+<div class="divtop">
+    <a asp-action="Create" class="create-btn">Create New</a>
+
+    @await Html.PartialAsync("_buttonExcel")
+    @await Html.PartialAsync("_Search")
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.E_mail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="myRow">
+                <td class="title1">
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td class="title2">
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.E_mail)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CustomersId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CustomersId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CustomersId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

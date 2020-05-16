@@ -1,0 +1,160 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/*.border-top {
+  border-top: 1px solid #e5e5e5;
+}*/
+/*.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}*/
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+/*-------------------------------------------------------*/
+header li > a{
+    color:white;
+}
+header li > a:hover {
+    font-weight: bold;
+    color: gold !important;
+}
+header > nav{
+    background-color:black;
+}
+.fa-star{
+    color:yellow;
+}
+main {
+    margin-top: 55px;
+    min-height: 100vh;
+    background-color: rgb(156, 16, 16);
+    color: gold;
+}
+.home-div {
+    background-image: url("https://www.gannett-cdn.com/presto/2019/04/02/PLOU/febba588-ff5b-4277-b600-c4c76252c317-MotleyFool-TMOT-1c387926-06ba00e6.jpg?crop=2094,1185,x0,y0&width=1600&height=800&fit=bounds");
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    color: white;
+}
+.create-btn{
+    color:gold;
+}
+.create-btn:hover {
+    text-decoration: none;
+    font-weight:bold;
+    color:gold;
+}
+
+.manipulations a:hover {
+    color: gold!important;
+ }
+.manipulations i {
+    margin-top: 7px;
+}
+.manipulations > a:hover{
+    text-decoration: none;
+}
+footer{
+    background-color:black;
+}
+footer, footer a{
+    color:white;
+}
+body {
+    background-color:black;
+}
+.table > thead{
+    background-color:black;
+    color:white;
+}
+.table > tbody > tr{
+    color:white;
+    font-weight:bold;
+}
+ .table > tbody > tr a{
+        color: gold;
+}
+.table .manipulations > a {
+    color: white;
+    font-weight: bold;
+}
+.table > tbody tr:hover {
+    background-color: white;
+    transform: scale(1.01);
+    transition: 0.3s ease-in-out;
+    color:black;
+}
+.table > tbody tr:hover a {
+    color: gold;
+}
+.table > tbody tr:hover .manipulations a{
+    color:black;
+}
+.customer, #myInput{
+    float:right;
+    margin-right: 10px;
+}
+.tv-images {
+    width:100px;
+    height:150px;
+}
+.divtop{
+    padding: 10px;
+}

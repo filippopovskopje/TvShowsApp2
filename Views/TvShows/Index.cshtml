@@ -1,0 +1,113 @@
+﻿@model IEnumerable<TvShowsApp.Models.TvShow>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Movies</h1>
+<div class="divtop">
+    <a asp-action="Create" class="create-btn">Create New</a>
+    <p class="customer">
+        <label class="control-label">Name</label>
+        <select asp-items="ViewBag.CusId" id="klient"></select>
+    </p>
+    @await Html.PartialAsync("_buttonExcel")
+    @await Html.PartialAsync("_Search")
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImdbUrl)
+
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="myRow">
+                <td>
+                    @if (item.ImageUrl != null)
+                    {
+                        <img src="@Url.Content(item.ImageUrl)" class="tv-images" />
+                    }
+                </td>
+                <td class="title1">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td class="title2">
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    <i class="fas fa-star"></i>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    <a href="@item.ImdbUrl" target="_blank">@item.Title</a>
+                </td>
+                <td class="manipulations">
+                    <a asp-action="Edit" asp-route-id="@item.TvId"><i class="fas fa-edit"></i> Edit</a>  <br />
+                    <a asp-action="Details" asp-route-id="@item.TvId"><i class="far fa-eye"></i> Details</a>  <br />
+                    <a asp-action="Delete" asp-route-id="@item.TvId"><i class="fas fa-trash-alt"></i> Delete</a>  <br />
+
+                    <a asp-controller="Actors" asp-action="Index" asp-route-id="@item.TvId"><i class="fas fa-users"></i> Actors</a>
+                    <br />
+                    @if (!item.Available)
+                    {
+                        <a id="rent_@item.TvId" onclick="rent(@item.TvId)" href="#"><i class="fas fa-cart-plus"></i> Rent</a>
+                        <a id="ret_@item.TvId" onclick="ret(@item.TvId)" href="#" style="display: none;"><i class="fas fa-cart-plus"></i> Return</a>
+                    }
+                    else
+                    {
+                        <a id="rent_@item.TvId" onclick="rent(@item.TvId)" href="#" style="display: none;"><i class="fas fa-cart-plus"></i> Rent</a>
+                        <a id="ret_@item.TvId" onclick="ret(@item.TvId)" href="#"><i class="fas fa-cart-plus"></i> Return</a>
+                    }
+                    @*@if (!@item.Available)
+                        {
+                            <a asp-controller="RentedMovies" asp-route-tvshowid="@item.TvId" asp-route-cusid="0" asp-action="Rent"
+                               class="rentBtn" id="@item.TvId">
+                                <i class="fas fa-shopping-cart"></i> Rent
+                            </a>
+                            <a asp-controller="RentedMovies" asp-route-tvshowid="@item.TvId" asp-route-cusid="0" asp-action="Return"
+                               class="returnBtn" id="@item.TvId" style="display: none;">
+                                <i class="fas fa-shopping-cart"></i> Return
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="RentedMovies" asp-route-tvshowid="@item.TvId" asp-route-cusid="0" asp-action="Return"
+                               class="returnBtn" id="@item.TvId">
+                                <i class="fas fa-shopping-cart"></i> Return
+                            </a>
+                            <a asp-controller="RentedMovies" asp-route-tvshowid="@item.TvId" asp-route-cusid="0" asp-action="Rent"
+                               class="rentBtn" id="@item.TvId" style="display: none;">
+                                <i class="fas fa-shopping-cart"></i> Rent
+                            </a>
+                        }*@
+
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

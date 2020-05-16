@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TvShowsApp.Models.Actors>
+@{
+    ViewData["Title"] = "ViewActors";
+}
+
+<h1 class="text-center">ViewActors</h1>
+<div class="divtop">
+    @await Html.PartialAsync("_buttonExcel")
+    @await Html.PartialAsync("_Search")
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Born)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TvShow.Title)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="myRow">
+                <td>
+                    @if (item.ImageUrl != null)
+                    {
+                        <img src="@Url.Content(item.ImageUrl)" style="width:auto; height:150px" />
+                    }
+                </td>
+                <td class="title1">
+                    <a href="@item.ImdbUrl" target="_blank">@item.Name</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Born)
+                </td>
+
+                <td class="title2">
+                    <a href="@item.TvShow.ImdbUrl" target="_blank">@item.TvShow.Title</a>
+                </td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>

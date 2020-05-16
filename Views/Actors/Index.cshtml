@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TvShowsApp.Models.Actors>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" asp-route-id=@ViewBag.TvShowid>Create New</a> @*promena TvShowid*@
+</p>
+@await Html.PartialAsync("_buttonExcel")
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Born)
+            </th>
+            @*  <th>
+                    @Html.DisplayNameFor(model => model.ImdbUrl)
+                </th>*@
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.ImageUrl != null)
+                    {
+                        <img src="@Url.Content(item.ImageUrl)" class="tv-images" />
+                    }
+                </td>
+                <td>
+                    <a href="@item.ImdbUrl" target="_blank">@item.Name</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Born)
+                </td>
+
+                @*Actors.TvShow_id.Title*@
+                @*<td>
+                        <a href="@item.ImdbUrl" target="_blank">@item.Name</a>
+
+                    </td>*@
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ActorId ">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ActorId ">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ActorId ">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
